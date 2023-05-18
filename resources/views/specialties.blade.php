@@ -34,8 +34,6 @@
 <!-- header end -->
 
 <main>
-    <!-- hero-area start -->
-    <!-- hero-area end -->
     <!-- about-area start -->
     <section class="about-area pt-120 pb-90">
         <div class="container">
@@ -63,78 +61,20 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-xl-4 col-lg-6 col-md-6">
-                    <div class="service-box service-box-border text-center mb-30">
-                        <div class="service-thumb">
-                            <img src="img/services/service1.png" alt="">
-                        </div>
-                        <div class="service-content">
-                            <h3><a href="#">Body Surgery</a></h3>
-                            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
-                            <a class="service-link" href="services-details.html">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-6 col-md-6">
-                    <div class="service-box service-box-border text-center mb-30">
-                        <div class="service-thumb">
-                            <img src="img/services/service2.png" alt="">
-                        </div>
-                        <div class="service-content">
-                            <h3><a href="#">Dental Care</a></h3>
-                            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
-                            <a class="service-link" href="services-details.html">Read More</a>
+                @foreach($Specialty as $Specialt)
+                    <div class="col-xl-4 col-lg-6 col-md-6">
+                        <div class="service-box service-box-border text-center mb-30">
+                            <div class="service-thumb">
+                                <img src="img/services/service1.png" alt="">
+                            </div>
+                            <div class="service-content">
+                                <h3><a href="{{ route('doctors.specialty', ['id' => $Specialt->id]) }}">{{ $Specialt->specialty_name }}</a></h3>
+                                <p>{{ $Specialt->description }}</p>
+                                <a class="service-link" href="{{ route('doctors.specialty', ['id' => $Specialt->id]) }}">View Doctors</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-xl-4 col-lg-6 col-md-6">
-                    <div class="service-box service-box-border text-center mb-30">
-                        <div class="service-thumb">
-                            <img src="img/services/service3.png" alt="">
-                        </div>
-                        <div class="service-content">
-                            <h3><a href="#">Eye Care</a></h3>
-                            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
-                            <a class="service-link" href="services-details.html">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-6 col-md-6">
-                    <div class="service-box service-box-border text-center mb-30">
-                        <div class="service-thumb">
-                            <img src="img/services/service4.png" alt="">
-                        </div>
-                        <div class="service-content">
-                            <h3><a href="#">Blood Cancer</a></h3>
-                            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
-                            <a class="service-link" href="services-details.html">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-6 col-md-6">
-                    <div class="service-box service-box-border text-center mb-30">
-                        <div class="service-thumb">
-                            <img src="img/services/service5.png" alt="">
-                        </div>
-                        <div class="service-content">
-                            <h3><a href="#">Neurology Sargery</a></h3>
-                            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
-                            <a class="service-link" href="services-details.html">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-6 col-md-6">
-                    <div class="service-box service-box-border text-center mb-30">
-                        <div class="service-thumb">
-                            <img src="img/services/service6.png" alt="">
-                        </div>
-                        <div class="service-content">
-                            <h3><a href="#">Allergic Issue</a></h3>
-                            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
-                            <a class="service-link" href="services-details.html">Read More</a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>

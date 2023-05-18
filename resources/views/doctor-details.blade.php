@@ -11,6 +11,7 @@
     <link rel="manifest" href="site.webmanifest">
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
     <!-- Place favicon.png in the root directory -->
+    <!-- Place favicon.png in the root directory -->
 
     <!-- CSS here -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
@@ -34,63 +35,121 @@
 <!-- header end -->
 
 <main>
-    <!-- hero-area start -->
-    <!-- hero-area end -->
-    <!-- about-area start -->
-    <!-- about-area end -->
-    <!-- calculate-area start -->
-    <section class="appointment-area appointment-area-3 pos-rel pt-115 pb-120"
-             data-background="{{ asset('img/appoinment/appointment-bg.jpg') }}">
+    <!-- service-details-area start -->
+    <div class="doctor-details-area pt-115 pb-70">
         <div class="container">
-
-            <div class="row ">
-                <div class="col-lg-12 mx-auto">
-                    <div class="card mt-2 mx-auto p-4 bg-light">
-                        <div class="card-body bg-light">
-                            <div class="container">
-                                <h2>My Appointments</h2>
-                                <table class="table table-striped">
-                                    <thead>
-                                    <tr>
-                                        <th>Doctor Name</th>
-                                        <th>Appointment Date and Time</th>
-                                        <th>Reason</th>
-                                        <th>Status</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    @forelse ($appointments as $appointment)
-                                        <tr>
-                                            <td>{{ $appointment->doctor->first_name }} {{ $appointment->doctor->last_name }}</td>  {{-- Adjust these as per your actual relationships and columns --}}
-                                            <td>{{ \Carbon\Carbon::parse($appointment->appointment_time)->format('F d H:i') }}</td>
-                                            <td>{{ $appointment->reason }}</td>
-                                            <td>
-                                                @if($appointment->status == 0)
-                                                    <span style="color: orange">Waiting</span>
-                                                @elseif($appointment->status == 1)
-                                                    <span style="color: green">Scheduled</span>
-                                                @elseif($appointment->status == -1)
-                                                    <span style="color: red">Refused</span>
-                                                @endif
-                                            </td>
-                                        </tr>
-                                    @empty
-                                        <tr>
-                                            <td colspan="4" class="text-center">No appointments found</td>
-                                        </tr>
-                                    @endforelse
-                                    </tbody>
-                                </table>
+            <div class="row">
+                <div class="col-xl-7 col-lg-8">
+                    <article class="doctor-details-box">
+                        <div class="section-title pos-rel mb-25">
+                            <div class="section-icon">
+                                <img class="section-back-icon back-icon-left" src="{{ asset('img/section/section-back-icon-sky.png') }}"
+                                     alt="">
                             </div>
+                            <div class="section-text pos-rel">
+                                <h5 class="green-color text-up-case">introducing {{ $doctor->first_name }} {{ $doctor->last_name }}</h5>
+                                <h1>Doctor Profile</h1>
+
+                            </div>
+                            <div class="section-line pos-rel">
+                                <img src="{{ asset('img/shape/section-title-line.png') }}" alt="">
+                            </div>
+                        </div>
+                        <div class="service-details-text mb-40">
+                            <p>{{ $doctor->bio }}</p>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-xl-5 col-lg-4">
+                    <div class="service-widget mb-50">
+                        <div class="team-wrapper team-box-2 team-box-3 text-center mb-30">
+                            <div class="team-thumb">
+                                <img src="{{ $doctor->picture_profile }}" alt="{{ $doctor->first_name }}'s profile picture">
+                            </div>
+                            <div class="team-member-info mt-35 mb-35">
+                                <h3><a href="doctor-details.html">{{ $doctor->first_name }} {{ $doctor->last_name }}</a></h3>
+                                <h6 class="f-500 text-up-case letter-spacing pink-color">@foreach($doctor->specialties as $specialty)
+                                        <li>{{ $specialty->specialty_name }}</li>
+                                    @endforeach</h6>
+                            </div>
+                            <div class="team-social-profile">
+                                <ul>
+                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-behance"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-pinterest"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-widget mb-50">
+                        <div class="widget-title-box mb-30">
+                            <h3 class="widget-title">Qualifications</h3>
+                        </div>
+                        <div class="more-service-list">
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <div class="more-service-icon"><img src="img/services/more-ser-1.png" alt=""></div>
+                                        <div class="more-service-title doctor-details-title">{{ $doctor->qualification }}</span></div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="service-widget mb-50">
+                        <div class="widget-title-box mb-30">
+                            <h3 class="widget-title">Experience</h3>
+                        </div>
+                        <div class="more-service-list">
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <div class="more-service-title doctor-details-title">{{ $doctor->years_of_experience }} year</span></div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="service-widget mb-80">
+                        <div class="widget-title-box mb-30">
+                            <h3 class="widget-title">Get Some Advice?</h3>
+                        </div>
+                        <form class="service-contact-form" action="">
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <div class="contact-input contact-icon contact-user mb-20">
+                                        <input type="text" placeholder="Enter your name">
+                                    </div>
+                                </div>
+                                <div class="col-xl-12">
+                                    <div class="contact-input contact-icon contact-mail mb-20">
+                                        <input type="text" placeholder="Enter your email">
+                                    </div>
+                                </div>
+                                <div class="col-xl-12">
+                                    <div class="contact-input contact-icon contact-hourglass">
+                                        <select name="#" id="service-option">
+                                            <option value="1">Select type of care</option>
+                                            <option value="2">Select type of care</option>
+                                            <option value="2">Select type of care</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="ser-form-btn text-center mt-40">
+                            <a data-animation="fadeInLeft" data-delay=".6s" href="#" class="btn btn-icon ml-0"
+                               style="animation-delay: 0.6s;" tabindex="0"><span>+</span>Request for call</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- calculate-area end -->
-    <!-- latest-news-area start -->
-    <!-- latest-news-area end -->
+    </div>
+    <!-- service-details-area end -->
 </main>
 
 <!-- footer start -->
@@ -211,6 +270,7 @@
 <script src="{{ asset('js/waypoints.min.js') }}"></script>
 <script src="{{ asset('js/imagesloaded.pkgd.min.js') }}"></script>
 <script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvEEMx3XDpByNzYNn0n62Zsq_sVYPx1zY"></script>
 <script src="{{ asset('js/plugins.js') }}"></script>
 <script src="{{ asset('js/main.js') }}"></script>
 </body>

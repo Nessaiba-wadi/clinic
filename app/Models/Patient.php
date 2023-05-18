@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Patient extends Model
 {
     use HasFactory;
+
+    public function favorites()
+    {
+        return $this->belongsToMany(Doctor::class, 'favorites', 'patient_id', 'doctor_id');
+    }
 }

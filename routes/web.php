@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DoctorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,17 +21,24 @@ Route::get('/', function () {
     return view('index');
 })->name('home');
 
-Route::get('/specialties', function () {
-    return view('specialties');
-})->name('specialties');
 
-Route::get('/doctors', function () {
-    return view('doctors');
-})->name('doctors');
+Route::get('/doctors', 'App\Http\Controllers\DoctorController@index')->name('doctors');
+
+Route::get('/specialties', 'App\Http\Controllers\SpecialitiesController@index')->name('specialties');
+
+Route::get('/specialties/{id}', 'App\Http\Controllers\DoctorController@showBySpecialty')->name('doctors.specialty');
+
+Route::get('/doctors/{doctor}', 'App\Http\Controllers\DoctorController@show')->name('doctors.show');
+
+
+
 
 Route::get('/create-account', function () {
     return view('create-account');
 })->name('create-account');
+
+Route::post('/doctors/{doctor}/favorite', 'App\Http\Controllers\DoctorController@toggleFavorite')->name('doctors.favorite');
+
 
 // For authenticated users
 Route::middleware(['auth'])->group(function () {
@@ -39,30 +47,34 @@ Route::middleware(['auth'])->group(function () {
         return view('dashboard');
     })->name('user.dashboard');
 
+
     // Appointments
-    Route::get('/appointments', function () {
-        return view('user.appointments.index');
-    })->name('user.appointments');
 
-    Route::get('/appointments/upcoming', function () {
-        return view('user.appointments.upcoming');
-    })->name('user.appointments.upcoming');
+    Route::get('/appointments', 'App\Http\Controllers\SpecialitiesController@GetSpeciality')->name('user.appointments');
 
-    Route::get('/appointments/past', function () {
-        return view('user.appointments.past');
-    })->name('user.appointments.past');
+    Route::get('/specialties/{id}', 'App\Http\Controllers\DoctorController@getDoctorsBySpecialty')->name('doctors.specialty');
 
-    Route::get('/appointments/new', function () {
-        return view('user.appointments.new');
-    })->name('user.appointments.new');
+    Route::post('/book_appointment', 'App\Http\Controllers\AppointmentController@handleAppointment')->name('book_appointment');
+
+    Route::get('/get-doctors/{specialty}', 'App\Http\Controllers\DoctorController@getDoctorsBySpecialty')->name('get.doctors');
+
+    Route::get('/appointments-listes', 'App\Http\Controllers\AppointmentController@GetList')->name('user.appointments.list');
+
+
+    Route::get('/appointments-upcoming', 'App\Http\Controllers\AppointmentController@GetUpcomingAppointments')->name('user.appointments.upcoming');
+
+    Route::get('/appointments-passed', 'App\Http\Controllers\AppointmentController@GetPassedAppointments')->name('user.appointments.passed');
+
+
+    Route::get('/profile', function () {
+        return view('user.profile');
+    })->name('profile');
+
 
     Route::get('/favorites', function () {
         return view('user.favorites');
     })->name('user.favorites');
 
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('user.profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('user.profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('user.profile.destroy');
 
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });

@@ -40,14 +40,18 @@
                                     @if(Auth::user()->role == 'patient')
                                         <li><a href="{{ route('user.appointments') }}">Appointments +</a>
                                             <ul class="submenu">
-                                                <li><a href="{{ route('user.appointments.upcoming') }}">Upcoming appointments</a></li>
-                                                <li><a href="{{ route('user.appointments.past') }}">Past appointments</a></li>
-                                                <li><a href="{{ route('user.appointments.new') }}">Book a new appointment </a></li>
+                                                <li><a href="{{ route('user.appointments.upcoming') }}">Upcoming
+                                                        appointments</a></li>
+                                                <li><a href="{{ route('user.appointments.passed') }}">Past
+                                                        appointments</a></li>
+                                                <li><a href="{{ route('user.appointments') }}">Book a new
+                                                        appointment </a></li>
                                             </ul>
                                         </li>
-                                            <li><a href="{{ route('doctors') }}">Doctors</a></li>
-                                            <li><a href="{{ route('user.favorites') }}">Favorites</a></li>
-                                        <li><a href="{{ route('user.profile.edit') }}">Profile</a></li>
+                                        <li><a href="{{ route('specialties') }}">Specialties</a></li>
+                                        <li><a href="{{ route('doctors') }}">Doctors</a></li>
+                                        <li><a href="{{ route('user.favorites') }}">Favorites</a></li>
+                                        <li><a href="{{ route('profile') }}">Profile</a></li>
                                         <li><a href="{{ route('logout') }}">Logout</a></li>
                                     @endif
                                 @endauth
@@ -57,37 +61,6 @@
                     </div>
                 </div>
 
-                <div class="col-xl-9 col-lg-9 col-md-9">
-                    <div class="header__menu f-right">
-                        <nav id="mobile-menu">
-                            <ul>
-                                @guest
-                                    <li><a href="{{ route('home') }}">Home</a></li>
-                                    <li><a href="{{ route('specialties') }}">Specialties</a></li>
-                                    <li><a href="{{ route('doctors') }}">Doctors</a></li>
-                                    <li><a href="{{ route('create-account') }}">Create Account</a></li>
-                                @endguest
-
-                                @auth
-                                    @if(Auth::user()->role == 'patient')
-                                        <li><a href="{{ route('user.appointments') }}">Appointments +</a>
-                                            <ul class="submenu">
-                                                <li><a href="{{ route('user.appointments.upcoming') }}">Upcoming appointments</a></li>
-                                                <li><a href="{{ route('user.appointments.past') }}">Past appointments</a></li>
-                                                <li><a href="{{ route('user.appointments.new') }}">Book a new appointment </a></li>
-                                            </ul>
-                                        </li>
-                                            <li><a href="{{ route('doctors') }}">Doctors</a></li>
-                                            <li><a href="{{ route('user.favorites') }}">Favorites</a></li>
-                                        <li><a href="{{ route('user.profile.edit') }}">Profile</a></li>
-                                        <li><a href="{{ route('logout') }}">Logout</a></li>
-                                    @endif
-                                @endauth
-
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
                 <div class="col-12">
                     <div class="mobile-menu"></div>
                 </div>
