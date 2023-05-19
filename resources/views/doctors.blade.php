@@ -57,7 +57,7 @@
                 </div>
                 <div class="col-xl-6 col-lg-5">
                     <div class="section-button text-right d-none d-lg-block pt-80">
-                        <a data-animation="fadeInLeft" data-delay=".6s" href="#"
+                        <a data-animation="fadeInLeft" data-delay=".6s" href="{{ route('user.appointments') }}"
                            class="btn btn-icon ml-0"><span>+</span>Make Appointment</a>
                     </div>
                 </div>
@@ -71,7 +71,9 @@
                                 <a class="team-link favorite-link"
                                    href="#"
                                    data-id="{{ $doctor->id }}"
-                                   style="background-color: {{ $doctor->isFavoritedBy(auth()->user()) ? 'rgb(225, 36, 84)' : 'rgb(143, 181, 105)' }};"
+                                   @if(auth()->check())
+                                       style="background-color: {{ $doctor->isFavoritedBy(auth()->user()) ? 'rgb(225, 36, 84)' : 'rgb(143, 181, 105)' }};"
+                                    @endif
                                 >
                                     +
                                 </a>
@@ -104,7 +106,7 @@
                         </div>
                     </div>
                     <div class="section-button section-button-left mb-30">
-                        <a data-animation="fadeInLeft" data-delay=".6s" href="#"
+                        <a data-animation="fadeInLeft" data-delay=".6s" href="{{ route('user.appointments') }}"
                            class="btn btn-icon ml-0"><span>+</span>Make Appointment</a>
                     </div>
                 </div>
@@ -303,6 +305,7 @@
 <script src="{{ asset('js/plugins.js') }}"></script>
 <script src="{{ asset('js/main.js') }}"></script>
 </body>
+@if(auth()->check())
 <script>
     $('.favorite-link').on('click', function(event) {
         event.preventDefault();
@@ -317,9 +320,10 @@
             },
             success: function (data) {
                 if (data.status == 'added') {
-                    self.css('color', 'red');
+                    self.css('background-color', 'rgb(225, 36, 84)');
+                    self.css('color', 'white');
                 } else {
-                    self.css('color', 'black');
+                    self.css('background-color', 'rgb(143, 181, 105)');
                 }
             }
         });
@@ -332,4 +336,5 @@
     });
 
 </script>
+@endif
 </html>

@@ -11,10 +11,13 @@ class DoctorController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $doctors = Doctor::with(['specialties', 'favorites' => function ($query) use ($user) {
-            $query->where('patient_id', $user->id);
-        }])->get();
-
+        if($user){
+            $doctors = Doctor::with(['specialties', 'favorites' => function ($query) use ($user) {
+                $query->where('patient_id', $user->id);
+            }])->get();
+        }else{
+            $doctors = Doctor::with('specialties')->get();
+        }
         return view('doctors', compact('doctors'));
     }
 
@@ -55,8 +58,6 @@ class DoctorController extends Controller
     {
         return view('doctor-details', compact('doctor'));
     }
-
-
 
 
 }

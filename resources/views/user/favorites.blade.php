@@ -36,102 +36,142 @@
 <main>
     <!-- hero-area start -->
     <!-- hero-area end -->
-    <!-- about-area start -->
-    <section class="about-area pt-120 pb-90">
+    <!-- team-area start -->
+    <section class="team-area pt-115 pb-55">
         <div class="container">
-            <div class="row ">
-                <div class="col-xl-6 col-lg-6 col-md-12">
-                    <div class="section-title section-title-m-0 pos-rel mb-50 text-right">
+            <div class="row">
+                <div class="col-xl-6 col-lg-7 col-md-10">
+                    <div class="section-title pos-rel mb-75">
                         <div class="section-icon">
-                            <img class="section-back-icon back-icon-right" src="img/section/section-back-icon.png" alt="">
+                            <img class="section-back-icon back-icon-left" src="img/section/section-back-icon.png"
+                                 alt="">
                         </div>
-                        <div class="section-text section-text-small pos-rel">
-                            <h5>health care facility</h5>
-                            <h1>Would you rather stay at home than go into a health care facility?</h1>
+                        <div class="section-text pos-rel">
+                            <h5>Our Team</h5>
+                            <h1>A Professional & Care Provider</h1>
+                        </div>
+                        <div class="section-line pos-rel">
+                            <img src="img/shape/section-title-line.png" alt="">
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-6 col-lg-6 col-md-12">
-                    <div class="facalty-text mb-50">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                            aliqua. Ut enim ad minim veniam, quis nost rud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                            nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                            qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde
-                            omnis iste natus error sit voluptatem accusantium.</p>
+                <div class="col-xl-6 col-lg-5">
+                    <div class="section-button text-right d-none d-lg-block pt-80">
+                        <a data-animation="fadeInLeft" data-delay=".6s" href="{{ route('user.appointments') }}"
+                           class="btn btn-icon ml-0"><span>+</span>Make Appointment</a>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-xl-4 col-lg-6 col-md-6">
-                    <div class="service-box service-box-border text-center mb-30">
-                        <div class="service-thumb">
-                            <img src="img/services/service1.png" alt="">
+                @if($doctors)
+                    @foreach($doctors as $doctor)
+                        <div class="col-xl-4 col-lg-4 col-md-6">
+                            <div class="team-box text-center mb-60">
+                                <div class="team-thumb mb-45 pos-rel">
+                                    <img src="{{ $doctor->picture_profile }}" alt="">
+                                    <a class="team-link favorite-link"
+                                       href="#"
+                                       data-id="{{ $doctor->id }}"
+                                       style="background-color: {{ $doctor->isFavoritedBy(auth()->user()) ? 'rgb(225, 36, 84)' : 'rgb(143, 181, 105)' }};"
+                                    >
+                                        +
+                                    </a>
+                                </div>
+                                <div class="team-content">
+                                    <h3><a href="{{ route('doctors.show', $doctor) }}">{{ $doctor->first_name }} {{ $doctor->last_name }}</a></h3>
+                                    @foreach($doctor->specialties as $specialty)
+                                        <h6>{{ $specialty->specialty_name }}</h6>
+                                    @endforeach
+                                </div>
+                            </div>
                         </div>
-                        <div class="service-content">
-                            <h3><a href="#">Body Surgery</a></h3>
-                            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
-                            <a class="service-link" href="services-details.html">Read More</a>
+                    @endforeach
+                @else
+                    <p>No Favorite Doctors.</p>
+                @endif
+            </div>
+        </div>
+    </section>
+    <!-- team-area end -->
+    <!-- fact-area start -->
+    <section class="fact-area fact-map primary-bg pos-rel pt-115 pb-60">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-10">
+                    <div class="section-title pos-rel mb-45">
+                        <div class="section-text section-text-white pos-rel">
+                            <h5>We are available 24/7</h5>
+                            <h1 class="white-color">We Always Ready For A Challenge.</h1>
+                        </div>
+                    </div>
+                    <div class="section-button section-button-left mb-30">
+                        <a data-animation="fadeInLeft" data-delay=".6s" href="{{ route('user.appointments') }}"
+                           class="btn btn-icon ml-0"><span>+</span>Make Appointment</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-lg-6 col-md-8">
+                    <div class="cta-satisfied">
+                        <div class="single-satisfied mb-50">
+                            <h1>1M+</h1>
+                            <h5><i class="fas fa-user"></i> Satisfied Patients</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                incididunt ut
+                                labore et dolore magna
+                                aliqua.</p>
+                        </div>
+                        <div class="single-satisfied mb-50">
+                            <h1>100+</h1>
+                            <h5><i class="far fa-thumbs-up"></i> World Awards</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                incididunt ut
+                                labore et dolore magna
+                                aliqua.</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-4 col-lg-6 col-md-6">
-                    <div class="service-box service-box-border text-center mb-30">
-                        <div class="service-thumb">
-                            <img src="img/services/service2.png" alt="">
-                        </div>
-                        <div class="service-content">
-                            <h3><a href="#">Dental Care</a></h3>
-                            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
-                            <a class="service-link" href="services-details.html">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-6 col-md-6">
-                    <div class="service-box service-box-border text-center mb-30">
-                        <div class="service-thumb">
-                            <img src="img/services/service3.png" alt="">
-                        </div>
-                        <div class="service-content">
-                            <h3><a href="#">Eye Care</a></h3>
-                            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
-                            <a class="service-link" href="services-details.html">Read More</a>
+            </div>
+        </div>
+    </section>
+    <!-- fact-area end -->
+    <!-- about-area start -->
+    <section class="about-area pt-120 pb-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-4 col-lg-4 col-md-6">
+                    <div class="single-couter counter-box counter-box-white text-center mb-30">
+                        <img src="img/counter/counter-icon-7.png" alt="">
+                        <h1><span class="theme-color counter">540</span>+</h1>
+                        <h6 class="green-color pb-20">Expert Doctors</h6>
+                        <div class="counter-text mt-10">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                incididunt ut
+                                lab.</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-4 col-lg-6 col-md-6">
-                    <div class="service-box service-box-border text-center mb-30">
-                        <div class="service-thumb">
-                            <img src="img/services/service4.png" alt="">
-                        </div>
-                        <div class="service-content">
-                            <h3><a href="#">Blood Cancer</a></h3>
-                            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
-                            <a class="service-link" href="services-details.html">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-6 col-md-6">
-                    <div class="service-box service-box-border text-center mb-30">
-                        <div class="service-thumb">
-                            <img src="img/services/service5.png" alt="">
-                        </div>
-                        <div class="service-content">
-                            <h3><a href="#">Neurology Sargery</a></h3>
-                            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
-                            <a class="service-link" href="services-details.html">Read More</a>
+                <div class="col-xl-4 col-lg-4 col-md-6">
+                    <div class="single-couter counter-box counter-box-white text-center mb-30">
+                        <img src="img/counter/counter-icon-83.png" alt="">
+                        <h1><span class="theme-color counter">899</span>+</h1>
+                        <h6 class="green-color pb-20">Problem Solve</h6>
+                        <span class="counter-shpae"></span>
+                        <div class="counter-text mt-10">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                incididunt ut
+                                lab.</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-4 col-lg-6 col-md-6">
-                    <div class="service-box service-box-border text-center mb-30">
-                        <div class="service-thumb">
-                            <img src="img/services/service6.png" alt="">
-                        </div>
-                        <div class="service-content">
-                            <h3><a href="#">Allergic Issue</a></h3>
-                            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
-                            <a class="service-link" href="services-details.html">Read More</a>
+                <div class="col-xl-4 col-lg-4 col-md-6">
+                    <div class="single-couter counter-box counter-box-white text-center mb-30">
+                        <img src="img/counter/counter-icon-9.png" alt="">
+                        <h1><span class="theme-color counter">100</span>+</h1>
+                        <h6 class="green-color pb-20">Award Winner</h6>
+                        <span class="counter-shpae"></span>
+                        <div class="counter-text mt-10">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                incididunt ut
+                                lab.</p>
                         </div>
                     </div>
                 </div>
@@ -139,119 +179,6 @@
         </div>
     </section>
     <!-- about-area end -->
-    <!-- calculate-area start -->
-    <section class="calculate-area pos-rel pt-115 pb-120" data-background="img/calculate/calculate-bg.png">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-7 col-lg-6 col-md-10">
-                    <div class="section-title calculate-section pos-rel mb-45">
-                        <div class="section-text section-text-white pos-rel">
-                            <h5>make a call</h5>
-                            <h1 class="white-color">Quote Calculator</h1>
-                            <p>If you require services on a public holiday, overnight services or live-in services, please call (+00)888.666.88 so we
-                                can discuss prices with you.</p>
-                        </div>
-                    </div>
-                    <div class="section-button section-button-left mb-30">
-                        <a data-animation="fadeInLeft" data-delay=".6s" href="#" class="btn btn-icon btn-icon-green ml-0"><span>+</span>Make Appointment</a>
-                    </div>
-                </div>
-                <div class="col-xl-5 col-lg-6">
-                    <div class="calculate-box white-bg">
-                        <div class="calculate-content">
-                            <div class="row">
-                                <div class="col-xl-12">
-                                    <select>
-                                        <option value="1">When would you like our support?</option>
-                                        <option value="2">When would you like our support?</option>
-                                    </select>
-                                </div>
-                                <div class="col-xl-12">
-                                    <select>
-                                        <option value="1">When would you like us arrive?</option>
-                                        <option value="2">When would you like our support?</option>
-                                    </select>
-                                </div>
-                                <div class="col-xl-12">
-                                    <select>
-                                        <option value="1">How long should we stay?</option>
-                                        <option value="2">When would you like our support?</option>
-                                    </select>
-                                </div>
-                                <div class="col-xl-12">
-                                    <select>
-                                        <option value="1">Where are you located?</option>
-                                        <option value="2">When would you like our support?</option>
-                                    </select>
-                                </div>
-                                <div class="col-xl-12">
-                                    <form class="calculate-form" action="#">
-                                        <input type="text" placeholder="Your Phone number">
-                                        <i class="fas fa-phone"></i>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="" class="btn mt-40">submit query</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- calculate-area end -->
-    <!-- hiring-area start -->
-    <section class="hiring-area pt-120 pb-120">
-        <div class="container">
-            <div class="row no-gutters hire-bg-2">
-                <div class="col-xl-6 col-lg-6">
-                    <div class="hire-img">
-                        <img class="img" src="img/hire/hire1.jpg" alt="">
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-6">
-                    <div class="hire-text">
-                        <h1>For Employers</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna
-                            aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                            commodo consequat.
-                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                            pariatur. Excepteur sint
-                            occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
-                        <a data-animation="fadeInLeft" data-delay=".6s" href="contact.html"
-                           class="btn btn-icon btn-icon-green ml-0"><span>+</span>Contact us</a>
-                    </div>
-                </div>
-            </div>
-            <div class="row no-gutters hire-bg">
-                <div class="col-xl-6 col-lg-6">
-                    <div class="hire-text">
-                        <h1>For Employers</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                            labore et
-                            dolore magna
-                            aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                            commodo
-                            consequat.
-                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                            pariatur.
-                            Excepteur sint
-                            occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
-                        <a data-animation="fadeInLeft" data-delay=".6s" href="#"
-                           class="btn btn-icon ml-0"><span>+</span>apply today</a>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-6">
-                    <div class="hire-img">
-                        <img class="img" src="img/hire/hire2.jpg" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- hiring-area end -->
 </main>
 
 <!-- footer start -->
@@ -354,6 +281,7 @@
 </footer>
 <!-- footer end -->
 
+
 <!-- JS here -->
 <script src="{{ asset('js/vendor/modernizr-3.5.0.min.js') }}"></script>
 <script src="{{ asset('js/vendor/jquery-1.12.4.min.js') }}"></script>
@@ -374,6 +302,26 @@
 <script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
 <script src="{{ asset('js/plugins.js') }}"></script>
 <script src="{{ asset('js/main.js') }}"></script>
-</body>
+<script>
+    document.querySelectorAll('.favorite-link').forEach((link) => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault(); // prevent the default link click action
+            const doctorId = this.dataset.id;
 
+            fetch(`/unfavorite-doctor/${doctorId}`, {
+                method: 'DELETE',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                },
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    if (data.success) {
+                        this.closest('.col-xl-4').remove();  // remove the doctor card from the UI
+                    }
+                });
+        });
+    });
+</script>
+</body>
 </html>

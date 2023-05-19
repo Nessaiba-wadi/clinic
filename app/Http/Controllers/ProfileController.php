@@ -2,59 +2,41 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProfileUpdateRequest;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\View\View;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
+use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
-    /**
-     * Display the user's profile form.
-     */
-    public function edit(Request $request): View
+    public function updateProfile(Request $request)
     {
-        return view('profile.edit', [
-            'user' => $request->user(),
+        $user = Auth::user();
+        $patient = $user->patient;
+
+        $validator = Validator::make($request->all(), [
+            'FirstName' => ['required', 'string', 'max:255'],
+            'LastName' => ['required', 'string', 'max:255'],
+            'phoneNumber' => ['required', 'numeric'],
+            'Birth_date' => ['required', 'date'],
+            'gender' => ['required', Rule::in(['H', 'F'])],
+            'adresse' => ['required', 'string', 'max:255'],
         ]);
-    }
 
-    /**
-     * Update the user's profile information.
-     */
-    public function update(ProfileUpdateRequest $request): RedirectResponse
-    {
-        $request->user()->fill($request->validated());
-
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator->errors());
         }
 
-        $request->user()->save();
+        // updating the user's patient information
+        $patient->first_name = $request->FirstName;
+        $patient->last_name = $request->LastName;
+        $patient->phone_number = $request->phoneNumber;
+        $patient->date_of_birth = $request->Birth_date;
+        $patient->gender = $request->gender;
+        $patient->address = $request->adresse;
+        $patient->save();
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
-    }
-
-    /**
-     * Delete the user's account.
-     */
-    public function destroy(Request $request): RedirectResponse
-    {
-        $request->validateWithBag('userDeletion', [
-            'password' => ['required', 'current_password'],
-        ]);
-
-        $user = $request->user();
-
-        Auth::logout();
-
-        $user->delete();
-
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-
-        return Redirect::to('/');
+        // redirect back to the form with a success message
+        return redirect()->back()->with('message', 'Profile updated successfully.');
     }
 }

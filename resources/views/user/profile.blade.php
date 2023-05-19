@@ -53,14 +53,14 @@
                     <div class="card mt-2 mx-auto p-4 bg-light">
                         <div class="card-body bg-light">
                             <div class="container">
-                                <form method="post">
+                                <form method="post" action="{{ route('update-profile') }}">
                                     @csrf
                                     <div class="controls">
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="form_name">Firstname *</label>
-                                                    <input id="form_name" type="text" name="name" class="form-control"
+                                                    <input id="form_name" type="text" name="FirstName" class="form-control"
                                                            placeholder="Please enter your firstname *"
                                                            required="required" data-error="Firstname is required."
                                                            value="{{ auth()->user()->patient->first_name }}">
@@ -69,7 +69,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="form_name">Last Name *</label>
-                                                    <input id="form_name" type="text" name="name" class="form-control"
+                                                    <input id="form_name" type="text" name="LastName" class="form-control"
                                                            placeholder="Please enter your firstname *"
                                                            required="required" data-error="Firstname is required."
                                                            value="{{ auth()->user()->patient->last_name }}">
@@ -80,7 +80,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="form_lastname">Email</label>
-                                                    <input id="form_lastname" type="text" name="surname"
+                                                    <input id="form_lastname" type="text"
                                                            class="form-control"
                                                            placeholder="Please enter your lastname *"
                                                            required="required" data-error="Lastname is required."
@@ -90,7 +90,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="form_lastname">Phone Number</label>
-                                                    <input id="form_lastname" type="text" name="surname"
+                                                    <input id="form_lastname" type="text" name="phoneNumber"
                                                            class="form-control"
                                                            placeholder="Please enter your lastname *"
                                                            required="required" data-error="Lastname is required."
@@ -101,8 +101,8 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="form_lastname">Date Naissance</label>
-                                                    <input id="form_lastname" type="date" name="surname"
+                                                    <label for="form_lastname">Birth Date</label>
+                                                    <input id="form_lastname" type="date" name="Birth_date"
                                                            class="form-control"
                                                            placeholder="Please enter your lastname *"
                                                            required="required" data-error="Lastname is required."
@@ -113,7 +113,7 @@
                                                 <div class="form-group">
                                                     <label for="form_lastname">Gender</label>
                                                     <div>
-                                                        <select name="#" id="service-option">
+                                                        <select name="gender" id="gender">
                                                             @if(auth()->user()->patient->gender == "H")
                                                                 <option value="H" selected>Homme</option>
                                                                 <option value="F">Femme</option>
@@ -130,13 +130,13 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="form_reason">Address</label>
-                                                    <textarea id="form_reason" name="reason" class="form-control"
+                                                    <textarea id="form_reason" name="adresse" class="form-control"
                                                               placeholder="Write your Adresse here." rows="4"
                                                               required="required"
                                                               data-error="Please, leave us a reason.">{{ auth()->user()->patient->address }}</textarea>
                                                 </div>
                                             </div>
-                                            <input type="submit" class="btn btn-success btn-send  pt-2 btn-block" value="Send Message">
+                                            <input type="submit" class="btn btn-success btn-send  pt-2 btn-block" value="Update the profile">
                                         </div>
                                     </div>
                                 </form>
@@ -148,97 +148,6 @@
         </div>
     </section>
     <!-- calculate-area end -->
-    <!-- latest-news-area start -->
-    <section class="latest-news-area pt-115 pb-90">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-6 col-lg-7">
-                    <div class="section-title pos-rel mb-75">
-                        <div class="section-icon">
-                            <img class="section-back-icon back-icon-left" src="img/section/section-back-icon.png"
-                                 alt="">
-                        </div>
-                        <div class="section-text pos-rel">
-                            <h5>News</h5>
-                            <h1>Get Every Single Updates Here.</h1>
-                        </div>
-                        <div class="section-line pos-rel">
-                            <img src="img/shape/section-title-line.png" alt="">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-5 d-none d-lg-block">
-                    <div class="section-button text-right pt-80">
-                        <a data-animation="fadeInLeft" data-delay=".6s" href="#"
-                           class="btn btn-icon ml-0"><span>+</span>our
-                            blog</a>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xl-4 col-lg-6 col-md-6">
-                    <div class="latest-news-box mb-30">
-                        <div class="latest-news-thumb mb-35">
-                            <img src="img/blog/blog-thumb-1.jpg" alt="">
-                        </div>
-                        <div class="latest-news-content">
-                            <div class="news-meta mb-10">
-                                <span><a href="#" class="news-tag">Medical,</a></span>
-                                <span><a href="#" class="news-tag">Medicine</a></span>
-                            </div>
-                            <h3><a href="news-details.html">Lorem ipsum dolor sit amet, cons ectetur adidis dicolo
-                                    wiran.</a></h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut
-                                labore et dolore
-                                magna
-                                aliqua. Ut enim ad minim veniam.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-6 col-md-6">
-                    <div class="latest-news-box mb-30">
-                        <div class="latest-news-thumb mb-35">
-                            <img src="img/blog/blog-thumb-2.jpg" alt="">
-                        </div>
-                        <div class="latest-news-content">
-                            <div class="news-meta mb-10">
-                                <span><a href="#" class="news-tag">Medical,</a></span>
-                                <span><a href="#" class="news-tag">Medicine</a></span>
-                            </div>
-                            <h3><a href="news-details.html">Lorem ipsum dolor sit amet, cons ectetur adidis dicolo
-                                    wiran.</a></h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut
-                                labore et dolore
-                                magna
-                                aliqua. Ut enim ad minim veniam.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-12 col-md-12">
-                    <div class="recent-news-list mb-30">
-                        <div class="latest-news-content singl-news news-border-bottom">
-                            <h3><a href="news-details.html">Lorem ipsum dolor sit amet, consectetur adidis.</a></h3>
-                            <span class="meta-date"><i class="far fa-calendar"></i>23rd Jan 2019</span>
-                            <span class="meta-date"><a href="#"><i class="far fa-comments"></i>33 Comments</a></span>
-                        </div>
-                        <div class="latest-news-content singl-news news-border-bottom">
-                            <h3><a href="news-details.html">Lorem ipsum dolor sit amet, consectetur adidis.</a></h3>
-                            <span class="meta-date"><i class="far fa-calendar"></i>23rd Jan 2019</span>
-                            <span class="meta-date"><a href="#"><i class="far fa-comments"></i>33 Comments</a></span>
-                        </div>
-                        <div class="latest-news-content singl-news ">
-                            <h3><a href="news-details.html">Lorem ipsum dolor sit amet, consectetur adidis.</a></h3>
-                            <span class="meta-date"><i class="far fa-calendar"></i>23rd Jan 2019</span>
-                            <span class="meta-date"><a href="#"><i class="far fa-comments"></i>33 Comments</a></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- latest-news-area end -->
 </main>
 
 <!-- footer start -->

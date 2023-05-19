@@ -25,6 +25,11 @@
     <link rel="stylesheet" href="{{ asset('css/default.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
+    <style>
+        .nice-select {
+            width: 270px;
+        }
+    </style>
 </head>
 
 <body>
@@ -34,149 +39,117 @@
 <!-- header end -->
 
 <main>
-    <!-- hero-area start -->
-    <!-- hero-area end -->
-    <!-- team-area start -->
-    <section class="team-area pt-115 pb-55">
+    <!-- login Area Strat-->
+    <section class="login-area pt-120 pb-120">
         <div class="container">
             <div class="row">
-                <div class="col-xl-6 col-lg-7 col-md-10">
-                    <div class="section-title pos-rel mb-75">
-                        <div class="section-icon">
-                            <img class="section-back-icon back-icon-left" src="img/section/section-back-icon.png"
-                                 alt="">
-                        </div>
-                        <div class="section-text pos-rel">
-                            <h5>Our Team</h5>
-                            <h1>A Professional & Care Provider</h1>
-                        </div>
-                        <div class="section-line pos-rel">
-                            <img src="img/shape/section-title-line.png" alt="">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-5">
-                    <div class="section-button text-right d-none d-lg-block pt-80">
-                        <a data-animation="fadeInLeft" data-delay=".6s" href="{{ route('user.appointments') }}"
-                           class="btn btn-icon ml-0"><span>+</span>Make Appointment</a>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                @foreach ($doctors as $doctor)
-                    <div class="col-xl-4 col-lg-4 col-md-6">
-                        <div class="team-box text-center mb-60">
-                            <div class="team-thumb mb-45 pos-rel">
-                                <img src="{{ $doctor->picture_profile }}" alt="">
-                                <a class="team-link favorite-link"
-                                   href="#"
-                                   data-id="{{ $doctor->id }}"
-                                   style="background-color: {{ $doctor->isFavoritedBy(auth()->user()) ? 'rgb(225, 36, 84)' : 'rgb(143, 181, 105)' }};"
-                                >
-                                    +
-                                </a>
+                <div class="col-lg-8 offset-lg-2">
+                    <div class="basic-login">
+                        <h3 class="text-center mb-60">Signup From Here</h3>
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
                             </div>
-                            <div class="team-content">
-                                <h3>{{ $doctor->first_name }} {{ $doctor->last_name }}</h3>
-                                @foreach($doctor->specialties as $specialty)
-                                    <h6>{{ $specialty->specialty_name }}</h6>
-                                @endforeach
+                        @endif
+                        <form method="POST" action="{{ route('register-patient') }}">
+                            @csrf
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="form_firstname">Firstname *</label>
+                                        <input id="form_firstname" type="text" name="FirstName" class="form-control"
+                                               placeholder="Please enter your firstname *"
+                                               required="required" data-error="Firstname is required."
+                                               value="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="form_name">Last Name *</label>
+                                        <input id="form_name" type="text" name="LastName" class="form-control"
+                                               placeholder="Please enter your firstname *"
+                                               required="required" data-error="Firstname is required."
+                                               value="">
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                @endforeach
 
-
-            </div>
-        </div>
-    </section>
-    <!-- team-area end -->
-    <!-- fact-area start -->
-    <section class="fact-area fact-map primary-bg pos-rel pt-115 pb-60">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-6 col-lg-6 col-md-10">
-                    <div class="section-title pos-rel mb-45">
-                        <div class="section-text section-text-white pos-rel">
-                            <h5>We are available 24/7</h5>
-                            <h1 class="white-color">We Always Ready For A Challenge.</h1>
-                        </div>
-                    </div>
-                    <div class="section-button section-button-left mb-30">
-                        <a data-animation="fadeInLeft" data-delay=".6s" href="{{ route('user.appointments') }}"
-                           class="btn btn-icon ml-0"><span>+</span>Make Appointment</a>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-lg-6 col-md-8">
-                    <div class="cta-satisfied">
-                        <div class="single-satisfied mb-50">
-                            <h1>1M+</h1>
-                            <h5><i class="fas fa-user"></i> Satisfied Patients</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut
-                                labore et dolore magna
-                                aliqua.</p>
-                        </div>
-                        <div class="single-satisfied mb-50">
-                            <h1>100+</h1>
-                            <h5><i class="far fa-thumbs-up"></i> World Awards</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut
-                                labore et dolore magna
-                                aliqua.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- fact-area end -->
-    <!-- about-area start -->
-    <section class="about-area pt-120 pb-80">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="single-couter counter-box counter-box-white text-center mb-30">
-                        <img src="img/counter/counter-icon-7.png" alt="">
-                        <h1><span class="theme-color counter">540</span>+</h1>
-                        <h6 class="green-color pb-20">Expert Doctors</h6>
-                        <div class="counter-text mt-10">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut
-                                lab.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="single-couter counter-box counter-box-white text-center mb-30">
-                        <img src="img/counter/counter-icon-83.png" alt="">
-                        <h1><span class="theme-color counter">899</span>+</h1>
-                        <h6 class="green-color pb-20">Problem Solve</h6>
-                        <span class="counter-shpae"></span>
-                        <div class="counter-text mt-10">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut
-                                lab.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="single-couter counter-box counter-box-white text-center mb-30">
-                        <img src="img/counter/counter-icon-9.png" alt="">
-                        <h1><span class="theme-color counter">100</span>+</h1>
-                        <h6 class="green-color pb-20">Award Winner</h6>
-                        <span class="counter-shpae"></span>
-                        <div class="counter-text mt-10">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut
-                                lab.</p>
-                        </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="form_lastname">Email</label>
+                                        <input id="form_email"
+                                               type="text"
+                                               name="email"
+                                               class="form-control"
+                                               placeholder="Please enter your Email *"
+                                               required="required" data-error="Email is required."
+                                               value="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="form_phone">Phone Number</label>
+                                        <input id="form_phone"
+                                               type="text"
+                                               name="phoneNumber"
+                                               class="form-control"
+                                               placeholder="Please enter your lastname *"
+                                               required="required" data-error="Lastname is required."
+                                               value="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="form_lastname">Birth Date</label>
+                                        <input id="form_lastname" type="date" name="date_of_birth" class="form-control" placeholder="Please enter your birth date *" required="required" data-error="Birth date is required." value="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="form_lastname">Gender</label>
+                                        <div>
+                                            <select name="gender" id="gender">
+                                                    <option value="H">Homme</option>
+                                                    <option value="F">Femme</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="form_reason">Address</label>
+                                            <textarea id="form_reason"
+                                                      name="adresse"
+                                                      style="width: 590px" class="form-control"
+                                                      placeholder="Write your Adresse here." rows="4"
+                                                      required="required"
+                                                      data-error="Please, leave us a reason."></textarea>
+                                        </div>
+                                </div>
+                            </div>
+                            <div class="mt-10"></div>
+                            <label for="pass">Password <span>*</span></label>
+                            <input id="pass" type="password" name="password" placeholder="Enter password..." />
+                            <label for="pass">Confirm Password <span>*</span></label>
+                            <input id="confirmpass" type="password" name="password_confirmation" placeholder="Enter password..." />
+                            <div class="mt-10"></div>
+                            <button type="submit" class="btn theme-btn-2 w-100">Register Now</button>
+                            <div class="or-divide"><span>or</span></div>
+                            <a href="{{ route('login') }}" class="btn btn-icon-green w-100">login Now</a>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- about-area end -->
+    <!-- login Area End-->
 </main>
 
 <!-- footer start -->
@@ -279,7 +252,6 @@
 </footer>
 <!-- footer end -->
 
-
 <!-- JS here -->
 <script src="{{ asset('js/vendor/modernizr-3.5.0.min.js') }}"></script>
 <script src="{{ asset('js/vendor/jquery-1.12.4.min.js') }}"></script>
@@ -298,37 +270,8 @@
 <script src="{{ asset('js/waypoints.min.js') }}"></script>
 <script src="{{ asset('js/imagesloaded.pkgd.min.js') }}"></script>
 <script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvEEMx3XDpByNzYNn0n62Zsq_sVYPx1zY"></script>
 <script src="{{ asset('js/plugins.js') }}"></script>
 <script src="{{ asset('js/main.js') }}"></script>
 </body>
-<script>
-    $('.favorite-link').on('click', function(event) {
-        event.preventDefault();
-        var doctorId = $(this).data('id');
-        var self = $(this);
 
-        $.ajax({
-            url: '/doctors/' + doctorId + '/favorite',
-            type: 'POST',
-            data: {
-                _token: $('meta[name="csrf-token"]').attr('content')
-            },
-            success: function (data) {
-                if (data.status == 'added') {
-                    self.css('color', 'red');
-                } else {
-                    self.css('color', 'black');
-                }
-            }
-        });
-    });
-
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-
-</script>
 </html>

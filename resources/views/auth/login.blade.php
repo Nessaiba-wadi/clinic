@@ -29,52 +29,7 @@
 <body>
 
 <!-- header begin -->
-<header>
-    <div class="top-bar d-none d-md-block">
-        <div class="container">
-            <div class="row d-flex align-items-center">
-                <div class="col-xl-6 offset-xl-1 col-lg-6 offset-lg-0 col-md-7 offset-md-1">
-                    <div class="header-info">
-                        <span><i class="fas fa-phone"></i> +1 800 833 9780</span>
-                        <span><i class="fas fa-envelope"></i> info@example.com</span>
-                    </div>
-                </div>
-                <div class="col-xl-5 col-lg-6 col-md-4">
-                    <div class="header-top-right-btn f-right">
-                        <a href="appoinment.html" class="btn">Make Appointment</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- menu-area -->
-    <div class="header-menu-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-3 col-lg-3 col-md-5 d-flex align-items-center">
-                    <div class="logo logo-circle pos-rel">
-                        <a href="index.html"><img src="img/logo/logo.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-xl-9 col-lg-9 col-md-9">
-                    <div class="header__menu f-right">
-                        <nav id="mobile-menu">
-                            <ul>
-                                <li><a href="about.html">Home</a></li>
-                                <li><a href="about.html">Specialties</a></li>
-                                <li><a href="about.html">Doctors</a></li>
-                                <li><a href="about.html">Create Account</a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="mobile-menu"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
+@include('partials.header')
 <!-- header end -->
 
 <main>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ProfileController;
@@ -31,8 +32,6 @@ Route::get('/specialties/{id}', 'App\Http\Controllers\DoctorController@showBySpe
 Route::get('/doctors/{doctor}', 'App\Http\Controllers\DoctorController@show')->name('doctors.show');
 
 
-
-
 Route::get('/create-account', function () {
     return view('create-account');
 })->name('create-account');
@@ -40,12 +39,19 @@ Route::get('/create-account', function () {
 Route::post('/doctors/{doctor}/favorite', 'App\Http\Controllers\DoctorController@toggleFavorite')->name('doctors.favorite');
 
 
+Route::get('/signup', function () {
+    return view('signup');
+})->name('signup');
+
+Route::post('/signup', [\App\Http\Controllers\RegistrationController::class, 'register'])->name('register-patient');
+
+
 // For authenticated users
 Route::middleware(['auth'])->group(function () {
 
     Route::get('/dashboard', function () {
         return view('dashboard');
-    })->name('user.dashboard');
+    })->name('dashboard');
 
 
     // Appointments
@@ -65,18 +71,18 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/appointments-passed', 'App\Http\Controllers\AppointmentController@GetPassedAppointments')->name('user.appointments.passed');
 
+    Route::post('/update-profile', 'App\Http\Controllers\ProfileController@updateProfile')->name('update-profile');
 
     Route::get('/profile', function () {
         return view('user.profile');
     })->name('profile');
 
+    Route::get('/favorites', 'App\Http\Controllers\FavoriteController@list')->name('favorites');
 
-    Route::get('/favorites', function () {
-        return view('user.favorites');
-    })->name('user.favorites');
+    Route::delete('/unfavorite-doctor/{doctor}', 'App\Http\Controllers\FavoriteController@unfavorite')->name('unfavorite.doctor');
 
 
-    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+    Route::get('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

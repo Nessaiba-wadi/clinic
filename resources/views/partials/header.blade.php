@@ -10,7 +10,7 @@
                 </div>
                 <div class="col-xl-5 col-lg-6 col-md-4">
                     <div class="header-top-right-btn f-right">
-                        <a href="appoinment.html" class="btn">Make Appointment</a>
+                        <a href="{{ route('user.appointments') }}" class="btn">Make Appointment</a>
                     </div>
                 </div>
             </div>
@@ -33,7 +33,7 @@
                                     <li><a href="{{ route('home') }}">Home</a></li>
                                     <li><a href="{{ route('specialties') }}">Specialties</a></li>
                                     <li><a href="{{ route('doctors') }}">Doctors</a></li>
-                                    <li><a href="{{ route('create-account') }}">Create Account</a></li>
+                                    <li><a href="{{ route('signup') }}">Create Account</a></li>
                                 @endguest
 
                                 @auth
@@ -50,7 +50,7 @@
                                         </li>
                                         <li><a href="{{ route('specialties') }}">Specialties</a></li>
                                         <li><a href="{{ route('doctors') }}">Doctors</a></li>
-                                        <li><a href="{{ route('user.favorites') }}">Favorites</a></li>
+                                        <li><a href="{{ route('favorites') }}">Favorites</a></li>
                                         <li><a href="{{ route('profile') }}">Profile</a></li>
                                         <li><a href="{{ route('logout') }}">Logout</a></li>
                                     @endif
