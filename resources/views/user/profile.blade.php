@@ -149,7 +149,6 @@
     </section>
     <!-- calculate-area end -->
 </main>
-
 <!-- footer start -->
 <footer>
     <div class="footer-top primary-bg footer-map pos-rel pt-120 pb-80">
@@ -160,16 +159,12 @@
                         <div class="footer-logo mb-35">
                             <a href="#"><img src="img/logo/footer-logo-3.png" alt=""></a>
                         </div>
-                        <div class="footer-contact-content mb-25">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna
-                                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.</p>
-                        </div>
+
                         <div class="footer-emailing">
                             <ul>
-                                <li><i class="far fa-envelope"></i>info@examplemedical.com</li>
-                                <li><i class="far fa-clone"></i>examplemedical.com</li>
-                                <li><i class="far fa-flag"></i>227 Marion Street, Columbia</li>
+                                <li><i class="far fa-envelope"></i>nessaiba@medidove.com</li>
+                                <li><i class="far fa-clone"></i>Health.com</li>
+                                <li><i class="far fa-flag"></i>43 Bd Rachidi, Casablanca</li>
                             </ul>
                         </div>
                     </div>
@@ -200,36 +195,11 @@
                 <div class="col-xl-4 col-lg-6 col-md-6">
                     <div class="footer-widget mb-40">
                         <div class="footer-title">
-                            <h3>News Feeds</h3>
+                            <h3>Politique de confidentialité</h3>
                         </div>
-                        <div class="blog-feeds pr-15">
-                            <div class="signle-blog-feeds mb-20">
-                                <div class="blog-feeds-thumb">
-                                    <a href="news-details.html"><img src="img/blog/feeds-thumb-1.jpg" alt=""></a>
-                                </div>
-                                <div class="blog-feeds-text">
-                                    <h5><a href="news-details.html">Lorem ipsum dolor sit am et, consectetur.</a></h5>
-                                    <span class="feeds-date">14 July 2019</span>
-                                </div>
-                            </div>
-                            <div class="signle-blog-feeds mb-20">
-                                <div class="blog-feeds-thumb">
-                                    <a href="news-details.html"><img src="img/blog/feeds-thumb-2.jpg" alt=""></a>
-                                </div>
-                                <div class="blog-feeds-text">
-                                    <h5><a href="news-details.html">Lorem ipsum dolor sit am et, consectetur.</a></h5>
-                                    <span class="feeds-date">14 July 2019</span>
-                                </div>
-                            </div>
-                            <div class="signle-blog-feeds  mb-20">
-                                <div class="blog-feeds-thumb">
-                                    <a href="news-details.html"><img src="img/blog/feeds-thumb-3.jpg" alt=""></a>
-                                </div>
-                                <div class="blog-feeds-text">
-                                    <h5><a href="news-details.html">Lorem ipsum dolor sit am et, consectetur.</a></h5>
-                                    <span class="feeds-date">14 July 2019</span>
-                                </div>
-                            </div>
+                        <div class="privacy-policy">
+                            <p>Consultez notre politique de confidentialité pour en savoir plus sur la manière dont nous protégeons vos données personnelles et respectons votre vie privée.</p>
+                            <a href="politique-confidentialite.html">Politique de confidentialité</a>
                         </div>
                     </div>
                 </div>
@@ -241,7 +211,7 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="footer-copyright footer-copyright-3 text-center">
-                        <p>Copyright by@ BasicTheme - 2019</p>
+                        <p>Copyright by@ Nessaiba wadi</p>
                     </div>
                 </div>
             </div>

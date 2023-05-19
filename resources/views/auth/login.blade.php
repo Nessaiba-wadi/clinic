@@ -79,11 +79,7 @@
                         <div class="footer-logo mb-35">
                             <a href="#"><img src="img/logo/footer-logo-3.png" alt=""></a>
                         </div>
-                        <div class="footer-contact-content mb-25">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna
-                                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.</p>
-                        </div>
+
                         <div class="footer-emailing">
                             <ul>
                                 <li><i class="far fa-envelope"></i>info@examplemedical.com</li>

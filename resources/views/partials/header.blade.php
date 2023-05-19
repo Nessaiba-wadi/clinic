@@ -4,8 +4,8 @@
             <div class="row d-flex align-items-center">
                 <div class="col-xl-6 offset-xl-1 col-lg-6 offset-lg-0 col-md-7 offset-md-1">
                     <div class="header-info">
-                        <span><i class="fas fa-phone"></i> +1 800 833 9780</span>
-                        <span><i class="fas fa-envelope"></i> info@example.com</span>
+                        <span><i class="fas fa-phone"></i> +212 663-123654</span>
+                        <span><i class="fas fa-envelope"></i> nessaiba@medidove.com</span>
                     </div>
                 </div>
                 <div class="col-xl-5 col-lg-6 col-md-4">

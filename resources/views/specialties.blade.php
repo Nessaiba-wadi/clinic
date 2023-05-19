@@ -44,19 +44,14 @@
                             <img class="section-back-icon back-icon-right" src="img/section/section-back-icon.png" alt="">
                         </div>
                         <div class="section-text section-text-small pos-rel">
-                            <h5>health care facility</h5>
-                            <h1>Would you rather stay at home than go into a health care facility?</h1>
+                            <h5>Your health A to Z</h5>
+                            <h1>Find the right healthcare for you</h1>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-6 col-lg-6 col-md-12">
                     <div class="facalty-text mb-50">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                            aliqua. Ut enim ad minim veniam, quis nost rud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                            nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                            qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde
-                            omnis iste natus error sit voluptatem accusantium.</p>
+                        <p>Medidove provides a comprehensive directory and user-friendly search tools to help you find the perfect healthcare provider. Read reviews, compare qualifications, and make informed decisions. Your health and well-being are our top priorities. Start your journey to optimal health today by finding the right healthcare for you on our platform.</p>
                     </div>
                 </div>
             </div>
@@ -65,7 +60,20 @@
                     <div class="col-xl-4 col-lg-6 col-md-6">
                         <div class="service-box service-box-border text-center mb-30">
                             <div class="service-thumb">
-                                <img src="img/services/service1.png" alt="">
+                                @if($Specialt->id == 1)
+                                    <img src="img/Spec/Cardiology.jpg" alt="">
+                                @elseif($Specialt->id == 2)
+                                    <img src="img/Spec/Dermatology.jpg" alt="">
+                                @elseif($Specialt->id == 3)
+                                    <img src="img/Spec/Gastroenterology.jpg" alt="">
+                                @elseif($Specialt->id == 4)
+                                    <img src="img/Spec/Orthopedics.jpg" alt="">
+                                @elseif($Specialt->id == 5)
+                                    <img src="img/Spec/Obstetrics and Gynecology.jpg" alt="">
+                                @elseif($Specialt->id == 6)
+                                    <img src="img/Spec/Neurology.jpg" alt="">
+
+                                @endif
                             </div>
                             <div class="service-content">
                                 <h3><a href="{{ route('doctors.specialty', ['id' => $Specialt->id]) }}">{{ $Specialt->specialty_name }}</a></h3>
@@ -79,86 +87,20 @@
         </div>
     </section>
     <!-- about-area end -->
-    <!-- calculate-area start -->
-    <section class="calculate-area pos-rel pt-115 pb-120" data-background="img/calculate/calculate-bg.png">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-7 col-lg-6 col-md-10">
-                    <div class="section-title calculate-section pos-rel mb-45">
-                        <div class="section-text section-text-white pos-rel">
-                            <h5>make a call</h5>
-                            <h1 class="white-color">Quote Calculator</h1>
-                            <p>If you require services on a public holiday, overnight services or live-in services, please call (+00)888.666.88 so we
-                                can discuss prices with you.</p>
-                        </div>
-                    </div>
-                    <div class="section-button section-button-left mb-30">
-                        <a data-animation="fadeInLeft" data-delay=".6s" href="#" class="btn btn-icon btn-icon-green ml-0"><span>+</span>Make Appointment</a>
-                    </div>
-                </div>
-                <div class="col-xl-5 col-lg-6">
-                    <div class="calculate-box white-bg">
-                        <div class="calculate-content">
-                            <div class="row">
-                                <div class="col-xl-12">
-                                    <select>
-                                        <option value="1">When would you like our support?</option>
-                                        <option value="2">When would you like our support?</option>
-                                    </select>
-                                </div>
-                                <div class="col-xl-12">
-                                    <select>
-                                        <option value="1">When would you like us arrive?</option>
-                                        <option value="2">When would you like our support?</option>
-                                    </select>
-                                </div>
-                                <div class="col-xl-12">
-                                    <select>
-                                        <option value="1">How long should we stay?</option>
-                                        <option value="2">When would you like our support?</option>
-                                    </select>
-                                </div>
-                                <div class="col-xl-12">
-                                    <select>
-                                        <option value="1">Where are you located?</option>
-                                        <option value="2">When would you like our support?</option>
-                                    </select>
-                                </div>
-                                <div class="col-xl-12">
-                                    <form class="calculate-form" action="#">
-                                        <input type="text" placeholder="Your Phone number">
-                                        <i class="fas fa-phone"></i>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="" class="btn mt-40">submit query</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- calculate-area end -->
+
     <!-- hiring-area start -->
     <section class="hiring-area pt-120 pb-120">
         <div class="container">
             <div class="row no-gutters hire-bg-2">
                 <div class="col-xl-6 col-lg-6">
                     <div class="hire-img">
-                        <img class="img" src="img/hire/hire1.jpg" alt="">
+                        <img class="img" src="img/section/doctor1.jpg" alt="">
                     </div>
                 </div>
                 <div class="col-xl-6 col-lg-6">
                     <div class="hire-text">
-                        <h1>For Employers</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna
-                            aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                            commodo consequat.
-                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                            pariatur. Excepteur sint
-                            occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
+                        <h1>Get in Touch</h1>
+                        <p>Feel free to get in touch with us! If you have any questions, concerns, or would like to schedule an appointment, our team is here to assist you. Simply click the button below to reach out to us. We value your feedback and strive to provide you with the best possible care. We look forward to hearing from you!</p>
                         <a data-animation="fadeInLeft" data-delay=".6s" href="contact.html"
                            class="btn btn-icon btn-icon-green ml-0"><span>+</span>Contact us</a>
                     </div>
@@ -167,25 +109,15 @@
             <div class="row no-gutters hire-bg">
                 <div class="col-xl-6 col-lg-6">
                     <div class="hire-text">
-                        <h1>For Employers</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                            labore et
-                            dolore magna
-                            aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                            commodo
-                            consequat.
-                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                            pariatur.
-                            Excepteur sint
-                            occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
+                        <h1>Your Health</h1>
+                        <p> at Medidove, the confidentiality of your personal information is our top priority. We take strict measures to protect your data and ensure its privacy at all times. Your information is used solely for the purpose of providing our medical services, and we comply with relevant data protection regulations. You can trust our commitment to your privacy and the security of your data.</p>
                         <a data-animation="fadeInLeft" data-delay=".6s" href="#"
-                           class="btn btn-icon ml-0"><span>+</span>apply today</a>
+                           class="btn btn-icon ml-0"><span>+</span>Make appointment</a>
                     </div>
                 </div>
                 <div class="col-xl-6 col-lg-6">
                     <div class="hire-img">
-                        <img class="img" src="img/hire/hire2.jpg" alt="">
+                        <img class="img" src="img/section/doctor2.jpg" alt="">
                     </div>
                 </div>
             </div>
@@ -193,7 +125,6 @@
     </section>
     <!-- hiring-area end -->
 </main>
-
 <!-- footer start -->
 <footer>
     <div class="footer-top primary-bg footer-map pos-rel pt-120 pb-80">
@@ -204,16 +135,12 @@
                         <div class="footer-logo mb-35">
                             <a href="#"><img src="img/logo/footer-logo-3.png" alt=""></a>
                         </div>
-                        <div class="footer-contact-content mb-25">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna
-                                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.</p>
-                        </div>
+
                         <div class="footer-emailing">
                             <ul>
-                                <li><i class="far fa-envelope"></i>info@examplemedical.com</li>
-                                <li><i class="far fa-clone"></i>examplemedical.com</li>
-                                <li><i class="far fa-flag"></i>227 Marion Street, Columbia</li>
+                                <li><i class="far fa-envelope"></i>nessaiba@medidove.com</li>
+                                <li><i class="far fa-clone"></i>Health.com</li>
+                                <li><i class="far fa-flag"></i>43 Bd Rachidi, Casablanca</li>
                             </ul>
                         </div>
                     </div>
@@ -244,36 +171,11 @@
                 <div class="col-xl-4 col-lg-6 col-md-6">
                     <div class="footer-widget mb-40">
                         <div class="footer-title">
-                            <h3>News Feeds</h3>
+                            <h3>Politique de confidentialité</h3>
                         </div>
-                        <div class="blog-feeds pr-15">
-                            <div class="signle-blog-feeds mb-20">
-                                <div class="blog-feeds-thumb">
-                                    <a href="news-details.html"><img src="img/blog/feeds-thumb-1.jpg" alt=""></a>
-                                </div>
-                                <div class="blog-feeds-text">
-                                    <h5><a href="news-details.html">Lorem ipsum dolor sit am et, consectetur.</a></h5>
-                                    <span class="feeds-date">14 July 2019</span>
-                                </div>
-                            </div>
-                            <div class="signle-blog-feeds mb-20">
-                                <div class="blog-feeds-thumb">
-                                    <a href="news-details.html"><img src="img/blog/feeds-thumb-2.jpg" alt=""></a>
-                                </div>
-                                <div class="blog-feeds-text">
-                                    <h5><a href="news-details.html">Lorem ipsum dolor sit am et, consectetur.</a></h5>
-                                    <span class="feeds-date">14 July 2019</span>
-                                </div>
-                            </div>
-                            <div class="signle-blog-feeds  mb-20">
-                                <div class="blog-feeds-thumb">
-                                    <a href="news-details.html"><img src="img/blog/feeds-thumb-3.jpg" alt=""></a>
-                                </div>
-                                <div class="blog-feeds-text">
-                                    <h5><a href="news-details.html">Lorem ipsum dolor sit am et, consectetur.</a></h5>
-                                    <span class="feeds-date">14 July 2019</span>
-                                </div>
-                            </div>
+                        <div class="privacy-policy">
+                            <p>Consultez notre politique de confidentialité pour en savoir plus sur la manière dont nous protégeons vos données personnelles et respectons votre vie privée.</p>
+                            <a href="politique-confidentialite.html">Politique de confidentialité</a>
                         </div>
                     </div>
                 </div>
@@ -285,7 +187,7 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="footer-copyright footer-copyright-3 text-center">
-                        <p>Copyright by@ BasicTheme - 2019</p>
+                        <p>Copyright by@ Nessaiba wadi</p>
                     </div>
                 </div>
             </div>
@@ -293,7 +195,6 @@
     </div>
 </footer>
 <!-- footer end -->
-
 <!-- JS here -->
 <script src="{{ asset('js/vendor/modernizr-3.5.0.min.js') }}"></script>
 <script src="{{ asset('js/vendor/jquery-1.12.4.min.js') }}"></script>

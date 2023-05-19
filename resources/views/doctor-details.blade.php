@@ -52,7 +52,7 @@
 
                             </div>
                             <div class="section-line pos-rel">
-                                <img src="{{ asset('img/shape/section-title-line.png') }}" alt="">
+                                <img src="{{ asset('img/doctor/section-title-line.png') }}" alt="">
                             </div>
                         </div>
                         <div class="service-details-text mb-40">
@@ -63,11 +63,13 @@
                 <div class="col-xl-5 col-lg-4">
                     <div class="service-widget mb-50">
                         <div class="team-wrapper team-box-2 team-box-3 text-center mb-30">
-                            <div class="team-thumb">
+                            <!--<div class="team-thumb">
                                 <img src="{{ $doctor->picture_profile }}" alt="{{ $doctor->first_name }}'s profile picture">
-                            </div>
-                            <div class="team-member-info mt-35 mb-35">
-                                <h3><a href="doctor-details.html">{{ $doctor->first_name }} {{ $doctor->last_name }}</a></h3>
+                            </div>-->
+                            <div class="r-info mt-35 mb-35">
+                                <h3> {{ $doctor->first_name }} {{ $doctor->last_name }}</h3>
+                                <h6>Phone number :{{ $doctor->phone_number }}</h6>
+                                <h6>address : {{ $doctor->address }}</h6>
                                 <h6 class="f-500 text-up-case letter-spacing pink-color">@foreach($doctor->specialties as $specialty)
                                         <li>{{ $specialty->specialty_name }}</li>
                                     @endforeach</h6>
@@ -93,7 +95,7 @@
                                 <li>
                                     <a href="#">
                                         <div class="more-service-icon"><img src="img/services/more-ser-1.png" alt=""></div>
-                                        <div class="more-service-title doctor-details-title">{{ $doctor->qualification }}</span></div>
+                                        <div class="more-service-title doctor-details-title"><h6>{{ $doctor->qualification }}</span></h6></div>
                                     </a>
                                 </li>
                             </ul>
@@ -142,7 +144,7 @@
                         </form>
                         <div class="ser-form-btn text-center mt-40">
                             <a data-animation="fadeInLeft" data-delay=".6s" href="#" class="btn btn-icon ml-0"
-                               style="animation-delay: 0.6s;" tabindex="0"><span>+</span>Request for call</a>
+                               style="animation-delay: 0.6s;" tabindex="0"><span>+</span>Request </a>
                         </div>
                     </div>
                 </div>
@@ -151,7 +153,6 @@
     </div>
     <!-- service-details-area end -->
 </main>
-
 <!-- footer start -->
 <footer>
     <div class="footer-top primary-bg footer-map pos-rel pt-120 pb-80">
@@ -160,18 +161,14 @@
                 <div class="col-xl-4 col-lg-6 col-md-6">
                     <div class="footer-contact-info footer-contact-info-3 mb-40">
                         <div class="footer-logo mb-35">
-                            <a href="#"><img src="img/logo/footer-logo-3.png" alt=""></a>
+                            <a href="#"><img src="/img/logo/footer-logo-3.png" alt=""></a>
                         </div>
-                        <div class="footer-contact-content mb-25">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna
-                                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.</p>
-                        </div>
+
                         <div class="footer-emailing">
                             <ul>
-                                <li><i class="far fa-envelope"></i>info@examplemedical.com</li>
-                                <li><i class="far fa-clone"></i>examplemedical.com</li>
-                                <li><i class="far fa-flag"></i>227 Marion Street, Columbia</li>
+                                <li><i class="far fa-envelope"></i>nessaiba@medidove.com</li>
+                                <li><i class="far fa-clone"></i>Health.com</li>
+                                <li><i class="far fa-flag"></i>43 Bd Rachidi, Casablanca</li>
                             </ul>
                         </div>
                     </div>
@@ -202,36 +199,11 @@
                 <div class="col-xl-4 col-lg-6 col-md-6">
                     <div class="footer-widget mb-40">
                         <div class="footer-title">
-                            <h3>News Feeds</h3>
+                            <h3>Politique de confidentialité</h3>
                         </div>
-                        <div class="blog-feeds pr-15">
-                            <div class="signle-blog-feeds mb-20">
-                                <div class="blog-feeds-thumb">
-                                    <a href="news-details.html"><img src="img/blog/feeds-thumb-1.jpg" alt=""></a>
-                                </div>
-                                <div class="blog-feeds-text">
-                                    <h5><a href="news-details.html">Lorem ipsum dolor sit am et, consectetur.</a></h5>
-                                    <span class="feeds-date">14 July 2019</span>
-                                </div>
-                            </div>
-                            <div class="signle-blog-feeds mb-20">
-                                <div class="blog-feeds-thumb">
-                                    <a href="news-details.html"><img src="img/blog/feeds-thumb-2.jpg" alt=""></a>
-                                </div>
-                                <div class="blog-feeds-text">
-                                    <h5><a href="news-details.html">Lorem ipsum dolor sit am et, consectetur.</a></h5>
-                                    <span class="feeds-date">14 July 2019</span>
-                                </div>
-                            </div>
-                            <div class="signle-blog-feeds  mb-20">
-                                <div class="blog-feeds-thumb">
-                                    <a href="news-details.html"><img src="img/blog/feeds-thumb-3.jpg" alt=""></a>
-                                </div>
-                                <div class="blog-feeds-text">
-                                    <h5><a href="news-details.html">Lorem ipsum dolor sit am et, consectetur.</a></h5>
-                                    <span class="feeds-date">14 July 2019</span>
-                                </div>
-                            </div>
+                        <div class="privacy-policy">
+                            <p>Consultez notre politique de confidentialité pour en savoir plus sur la manière dont nous protégeons vos données personnelles et respectons votre vie privée.</p>
+                            <a href="politique-confidentialite.html">Politique de confidentialité</a>
                         </div>
                     </div>
                 </div>
@@ -243,7 +215,7 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="footer-copyright footer-copyright-3 text-center">
-                        <p>Copyright by@ BasicTheme - 2019</p>
+                        <p>Copyright by@ Nessaiba wadi</p>
                     </div>
                 </div>
             </div>
