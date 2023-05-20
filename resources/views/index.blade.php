@@ -216,7 +216,7 @@
                         <div class="team-box text-center mb-60">
                             <div class="team-thumb mb-45 pos-rel">
                                 <img src="img/doctors/p5.jpg" alt="">
-                                <a class="team-link" href="doctors">+</a>
+                                <a class="team-link" href="doctors">👀</a>
                             </div>
                             <div class="team-content">
                                 <h3>D.walid khaddoum</h3>
@@ -228,7 +228,7 @@
                         <div class="team-box text-center mb-60">
                             <div class="team-thumb mb-45 pos-rel">
                                 <img src="img/doctors/p4.jpg" alt="">
-                                <a class="team-link" href="doctors">+</a>
+                                <a class="team-link" href="doctors">👀</a>
                             </div>
                             <div class="team-content">
                                 <h3>Aissam Jadli</h3>
@@ -240,7 +240,7 @@
                         <div class="team-box text-center mb-60">
                             <div class="team-thumb mb-45 pos-rel">
                                 <img src="img/doctors/p1.jpg" alt="">
-                                <a class="team-link" href="doctors">+</a>
+                                <a class="team-link" href="doctors">👀</a>
                             </div>
                             <div class="team-content">
                                 <h3>Ihsane molan</h3>

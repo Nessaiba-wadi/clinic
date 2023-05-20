@@ -64,7 +64,6 @@
                     <div class="service-widget mb-50">
                         <div class="team-wrapper team-box-2 team-box-3 text-center mb-30">
                             <div class="team-thumb">
-                                <img src="{{ asset('storage/'.$doctor->picture_profile) }}" alt="{{ $doctor->first_name }}'s profile picture">
                             </div>
                             <div class="r-info mt-35 mb-35">
                                 <h3> {{ $doctor->first_name }} {{ $doctor->last_name }}</h3>
