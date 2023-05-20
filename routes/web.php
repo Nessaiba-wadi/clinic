@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
@@ -50,7 +51,7 @@ Route::post('/signup', [\App\Http\Controllers\RegistrationController::class, 're
 Route::middleware(['auth'])->group(function () {
 
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        return view('index');
     })->name('dashboard');
 
 
@@ -83,6 +84,29 @@ Route::middleware(['auth'])->group(function () {
 
 
     Route::get('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/admin/specialities', [AdminController::class, 'specialities'])->name('admin.specialities');
+    Route::get('/admin/doctors', [AdminController::class, 'doctors'])->name('admin.doctors');
+    Route::get('/admin/patients', [AdminController::class, 'patients'])->name('admin.patients');
+    Route::get('/admin/appointments', [AdminController::class, 'appointments'])->name('admin.appointments');
+    Route::get('/admin/users', [AdminController::class, 'users'])->name('admin.users');
+    Route::get('/admin/specialities/new', [AdminController::class, 'showAddSpecialtyForm'])->name('speciality.new_form');
+    Route::post('/admin/specialities/', [AdminController::class, 'addspeciality'])->name('speciality.new');
+    Route::get('/admin/specialities/{speciality}/edit', [App\Http\Controllers\AdminController::class, 'editSpeciality'])->name('specialities.edit');
+    Route::put('/admin/specialities/{speciality}', [App\Http\Controllers\AdminController::class, 'updateSpeciality'])->name('specialities.update');
+    Route::delete('/admin/specialities/{speciality}', [App\Http\Controllers\AdminController::class, 'deleteSpeciality'])->name('specialities.destroy');
+    Route::post('/admin/appointments/{appointment}/accept', [App\Http\Controllers\AdminController::class, 'acceptAppointment'])->name('appointments.accept');
+    Route::post('/admin/appointments/{appointment}/decline', [App\Http\Controllers\AdminController::class, 'declineAppointment'])->name('appointments.decline');
+    Route::post('/admin/appointments/{appointment}/cancel', [App\Http\Controllers\AdminController::class, 'cancelAppointment'])->name('appointments.cancel');
+    Route::get('/admin/doctors/add', [AdminController::class, 'addDoctor'])->name('doctors.new');
+    Route::post('/doctors', [AdminController::class, 'store'])->name('doctors.store');
+    Route::get('/admin/doctors/{doctor}/edit', [AdminController::class, 'editDoctor'])->name('doctors.edit');
+    Route::put('/admin/doctors/{doctor}', [AdminController::class, 'updateDoctor'])->name('doctors.update');
+    Route::delete('/admin/doctors/{doctor}', [AdminController::class, 'deleteDoctor'])->name('doctors.destroy');
+    Route::delete('/admin/user/{user}', [AdminController::class, 'deleteUser'])->name('user.destroy');
+
 });
 
 require __DIR__ . '/auth.php';

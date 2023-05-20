@@ -7,13 +7,19 @@
     <title>MediDove - Medical and Health HTML5 Template </title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
+    <style>
+        .nice-select .nice-select:active, .nice-select.open, .nice-select:focus {
+            width: 270px;
+        }
+    </style>
     <link rel="manifest" href="site.webmanifest">
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
     <!-- Place favicon.png in the root directory -->
 
     <!-- CSS here -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/animate.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/nice-select.css') }}">
@@ -33,40 +39,63 @@
 <!-- header end -->
 
 <main>
-    <!-- login Area Strat-->
-    <section class="login-area pt-100 pb-100">
+    <!-- hero-area start -->
+    <!-- hero-area end -->
+    <!-- about-area start -->
+    <!-- about-area end -->
+    <!-- calculate-area start -->
+    <section class="appointment-area appointment-area-3 pos-rel pt-115 pb-120"
+             data-background="{{ asset('img/appoinment/appointment-bg.jpg') }}">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-8 offset-lg-2">
-                    <div class="basic-login">
-                        <h3 class="text-center mb-60">Login From Here</h3>
-                        <form  method="POST" action="{{ route('login') }}">
-                            @csrf
-                            <label for="email" :value="__('Email')">Email Address <span>*</span></label>
-                            <input id="email" type="email" name="email" :value="old('email')" required autofocus autocomplete="username"  placeholder="Enter Username or Email address..." />
-                            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-                            <label for="password" :value="__('Password')">Password <span>*</span></label>
-                            <input id="password" name="password" type="password" required autocomplete="current-password" placeholder="Enter password..." />
-                            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-                            <div class="login-action mb-20 fix">
-                                    <span class="log-rem f-left">
-                                        <input id="remember_me" name="remember" type="checkbox" />
-                                        {{ __('Remember me') }}
-                                    </span>
-                                <span class="forgot-login f-right">
-                                        <a href="#">{{ __('Lost your password??') }}</a>
-                                    </span>
+
+            <div class="row ">
+                <div class="col-lg-7 mx-auto">
+                    <div class="card mt-2 mx-auto p-4 bg-light">
+                        <div class="card-body bg-light">
+                            <div class="container">
+                                <form method="POST" action="{{ route('specialities.update', $speciality) }}">
+                                    @csrf
+                                    @method('PUT')
+                                    <div class="controls">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="specialty_name">Name *</label>
+                                                    <input id="specialty_name" name="specialty_name" type="text" class="form-control"
+                                                           placeholder="Please enter your firstname *"
+                                                           required="required" data-error="Firstname is required."
+                                                           value="{{ $speciality->specialty_name }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="description">Description *</label>
+                                                    <textarea id="description" name="description" class="form-control"
+                                                              placeholder="Write a description here." rows="4"
+                                                              data-error="Please, leave us a description.">{{ $speciality->description }}</textarea>
+                                                </div>
+                                            </div>
+                                            <input style="margin-bottom: 5%;" type="submit" class="btn btn-primary btn-send  pt-2 btn-block" value="Update Speciality">
+                                        </div>
+                                    </div>
+                                </form>
+                                <form method="POST" action="{{ route('specialities.destroy', $speciality) }}" onsubmit="return confirm('Are you sure you want to delete this speciality? This action cannot be undone.')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-send  pt-2 btn-block">Delete Speciality</button>
+                                </form>
                             </div>
-                            <button class="btn btn-icon-green w-100">Login Now</button>
-                            <div class="or-divide"><span>or</span></div>
-                            <button class="btn theme-btn w-100">Register Now</button>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- login Area End-->
+    <!-- calculate-area end -->
+    <!-- latest-news-area start -->
+    <!-- latest-news-area end -->
 </main>
 
 <!-- footer start -->
@@ -158,9 +187,9 @@
 <script src="{{ asset('js/waypoints.min.js') }}"></script>
 <script src="{{ asset('js/imagesloaded.pkgd.min.js') }}"></script>
 <script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvEEMx3XDpByNzYNn0n62Zsq_sVYPx1zY"></script>
 <script src="{{ asset('js/plugins.js') }}"></script>
 <script src="{{ asset('js/main.js') }}"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </body>
 
 </html>

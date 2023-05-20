@@ -14,6 +14,7 @@
 
     <!-- CSS here -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/animate.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/nice-select.css') }}">
@@ -24,6 +25,28 @@
     <link rel="stylesheet" href="{{ asset('css/default.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
+    <style>
+        .nice-select {
+            width: 270px;
+            height: 60px
+        }
+
+        .basic-login input[type='checkbox'] {
+            height: auto;
+        }
+
+        .flex-container {
+            display: -webkit-box;
+            align-items: center;
+        }
+        .profile-img {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+    </style>
 </head>
 
 <body>
@@ -34,32 +57,33 @@
 
 <main>
     <!-- login Area Strat-->
-    <section class="login-area pt-100 pb-100">
+    <section class="login-area pt-120 pb-120">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
                     <div class="basic-login">
-                        <h3 class="text-center mb-60">Login From Here</h3>
-                        <form  method="POST" action="{{ route('login') }}">
-                            @csrf
-                            <label for="email" :value="__('Email')">Email Address <span>*</span></label>
-                            <input id="email" type="email" name="email" :value="old('email')" required autofocus autocomplete="username"  placeholder="Enter Username or Email address..." />
-                            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-                            <label for="password" :value="__('Password')">Password <span>*</span></label>
-                            <input id="password" name="password" type="password" required autocomplete="current-password" placeholder="Enter password..." />
-                            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-                            <div class="login-action mb-20 fix">
-                                    <span class="log-rem f-left">
-                                        <input id="remember_me" name="remember" type="checkbox" />
-                                        {{ __('Remember me') }}
-                                    </span>
-                                <span class="forgot-login f-right">
-                                        <a href="#">{{ __('Lost your password??') }}</a>
-                                    </span>
+                        <h3 class="text-center mb-60">Add New Doctor</h3>
+
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
                             </div>
-                            <button class="btn btn-icon-green w-100">Login Now</button>
-                            <div class="or-divide"><span>or</span></div>
-                            <button class="btn theme-btn w-100">Register Now</button>
+                        @endif
+                        <form method="POST" action="{{ route('speciality.new') }}">
+                            @csrf
+
+                            <label for="specialty_name">Specialty Name:</label>
+                            <input type="text" id="specialty_name" name="specialty_name" value="{{ old('specialty_name') }}">
+
+                            <label for="description">Description:</label>
+                            <textarea id="description" style="width: 590px" class="form-control" name="description">{{ old('description') }}</textarea>
+                            <div class="mt-10"></div>
+                            <button type="submit" class="btn theme-btn-2 w-100">Add Specialty</button>
+
                         </form>
                     </div>
                 </div>
@@ -158,7 +182,6 @@
 <script src="{{ asset('js/waypoints.min.js') }}"></script>
 <script src="{{ asset('js/imagesloaded.pkgd.min.js') }}"></script>
 <script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvEEMx3XDpByNzYNn0n62Zsq_sVYPx1zY"></script>
 <script src="{{ asset('js/plugins.js') }}"></script>
 <script src="{{ asset('js/main.js') }}"></script>
 </body>

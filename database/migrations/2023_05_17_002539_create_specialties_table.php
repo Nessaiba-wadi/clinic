@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('specialty_name');
             $table->text('description')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -4,10 +4,27 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Doctor extends Model
 {
+
+    protected $fillable = [
+        'user_id',
+        'first_name',
+        'last_name',
+        'gender',
+        'date_of_birth',
+        'phone_number',
+        'address',
+        'qualification',
+        'years_of_experience',
+        'bio',
+        'picture_profile',
+    ];
+
     use HasFactory;
+    use SoftDeletes;
 
     // Other model methods and properties go here
 

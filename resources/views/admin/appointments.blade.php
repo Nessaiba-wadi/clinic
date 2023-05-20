@@ -14,6 +14,7 @@
 
     <!-- CSS here -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/animate.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/nice-select.css') }}">
@@ -33,42 +34,75 @@
 <!-- header end -->
 
 <main>
-    <!-- login Area Strat-->
-    <section class="login-area pt-100 pb-100">
+    <!-- hero-area start -->
+    <!-- hero-area end -->
+    <!-- about-area start -->
+    <!-- about-area end -->
+    <!-- calculate-area start -->
+    <section class="appointment-area appointment-area-3 pos-rel pt-115 pb-120"
+             data-background="{{ asset('img/appoinment/appointment-bg.jpg') }}">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-8 offset-lg-2">
-                    <div class="basic-login">
-                        <h3 class="text-center mb-60">Login From Here</h3>
-                        <form  method="POST" action="{{ route('login') }}">
-                            @csrf
-                            <label for="email" :value="__('Email')">Email Address <span>*</span></label>
-                            <input id="email" type="email" name="email" :value="old('email')" required autofocus autocomplete="username"  placeholder="Enter Username or Email address..." />
-                            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-                            <label for="password" :value="__('Password')">Password <span>*</span></label>
-                            <input id="password" name="password" type="password" required autocomplete="current-password" placeholder="Enter password..." />
-                            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-                            <div class="login-action mb-20 fix">
-                                    <span class="log-rem f-left">
-                                        <input id="remember_me" name="remember" type="checkbox" />
-                                        {{ __('Remember me') }}
-                                    </span>
-                                <span class="forgot-login f-right">
-                                        <a href="#">{{ __('Lost your password??') }}</a>
-                                    </span>
+
+            <div class="row ">
+                <div class="col-lg-12 mx-auto">
+                    <div class="card mt-2 mx-auto p-4 bg-light">
+                        <div class="card-body bg-light">
+                            <div class="container">
+                                <h2>Appointments</h2>
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>Patient Name</th>
+                                        <th>Doctor Name</th>
+                                        <th>Time</th>
+                                        <th>Reason</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @forelse($appointments as $appointment)
+                                        <tr>
+                                            <td>{{ $appointment->patient->first_name }} {{ $appointment->patient->last_name }}</td>
+                                            <td>{{ $appointment->doctor->first_name }} {{ $appointment->doctor->last_name }}</td>
+                                            <td>{{ $appointment->appointment_time }}</td>
+                                            <td>{{ $appointment->reason }}</td>
+                                            <td>
+                                                @if($appointment->status == 0)
+                                                    <form method="POST" action="{{ route('appointments.accept', $appointment) }}">
+                                                        @csrf
+                                                        <button class="btn-success"type="submit">Schedule</button>
+                                                    </form>
+                                                    <form method="POST" action="{{ route('appointments.decline', $appointment) }}">
+                                                        @csrf
+                                                        <button class="btn-danger" type="submit">Decline</button>
+                                                    </form>
+                                                @elseif($appointment->status == 1)
+                                                    <form method="POST" action="{{ route('appointments.cancel', $appointment) }}" onsubmit="return confirm('Are you sure you want to cancel this appointment?');">
+                                                        @csrf
+                                                        <button class="btn-warning" type="submit">Cancel</button>
+                                                    </form>
+                                                @endif
+                                            </td>
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="5" class="text-center">No appointments found</td>
+                                        </tr>
+                                    @endforelse
+
+                                    </tbody>
+                                </table>
                             </div>
-                            <button class="btn btn-icon-green w-100">Login Now</button>
-                            <div class="or-divide"><span>or</span></div>
-                            <button class="btn theme-btn w-100">Register Now</button>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- login Area End-->
+    <!-- calculate-area end -->
+    <!-- latest-news-area start -->
+    <!-- latest-news-area end -->
 </main>
-
 <!-- footer start -->
 <footer>
     <div class="footer-top primary-bg footer-map pos-rel pt-120 pb-80">
@@ -158,7 +192,6 @@
 <script src="{{ asset('js/waypoints.min.js') }}"></script>
 <script src="{{ asset('js/imagesloaded.pkgd.min.js') }}"></script>
 <script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvEEMx3XDpByNzYNn0n62Zsq_sVYPx1zY"></script>
 <script src="{{ asset('js/plugins.js') }}"></script>
 <script src="{{ asset('js/main.js') }}"></script>
 </body>

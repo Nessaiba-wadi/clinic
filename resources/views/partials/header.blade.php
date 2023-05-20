@@ -53,7 +53,20 @@
                                         <li><a href="{{ route('favorites') }}">Favorites</a></li>
                                         <li><a href="{{ route('profile') }}">Profile</a></li>
                                         <li><a href="{{ route('logout') }}">Logout</a></li>
-                                    @endif
+                                        @elseif('admin')
+                                            <li><a href="{{ route('admin.specialities') }}">Specialities</a></li>
+
+                                            <li><a href="{{ route('admin.doctors') }}">Doctors</a></li>
+
+                                            <li><a href="{{ route('admin.patients') }}">Patients</a></li>
+
+                                            <li><a href="{{ route('admin.appointments') }}">Appointments</a></li>
+
+                                            <li><a href="{{ route('admin.users') }}">Users</a></li>
+
+                                            <li><a href="{{ route('logout') }}">Logout</a></li>
+
+                                        @endif
                                 @endauth
 
                             </ul>

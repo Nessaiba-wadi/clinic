@@ -67,7 +67,7 @@
                     <div class="col-xl-4 col-lg-4 col-md-6">
                         <div class="team-box text-center mb-60">
                             <div class="team-thumb mb-45 pos-rel">
-                                <img src="{{ $doctor->picture_profile }}" alt="">
+                                <img src="{{ asset('storage/'.$doctor->picture_profile) }}" alt="">
                                 <a class="team-link favorite-link"
                                    href="#"
                                    data-id="{{ $doctor->id }}"

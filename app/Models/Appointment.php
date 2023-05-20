@@ -24,6 +24,29 @@ class Appointment extends Model
         'special_request',
     ];
 
+
+    public function doctorUser() {
+        return $this->hasOneThrough(
+            User::class,
+            Doctor::class,
+            'id', // Foreign key on the doctors table...
+            'id', // Foreign key on the users table...
+            'doctor_id', // Local key on the appointments table...
+            'user_id' // Local key on the doctors table...
+        );
+    }
+
+    public function patientUser() {
+        return $this->hasOneThrough(
+            User::class,
+            Patient::class,
+            'id', // Foreign key on the patients table...
+            'id', // Foreign key on the users table...
+            'patient_id', // Local key on the appointments table...
+            'user_id' // Local key on the patients table...
+        );
+    }
+
     public function specialty() {
         return $this->belongsTo(Specialty::class);
     }
@@ -34,5 +57,9 @@ class Appointment extends Model
 
     public function user() {
         return $this->belongsTo(User::class);
+    }
+
+    public function patient() {
+        return $this->belongsTo(Patient::class);
     }
 }

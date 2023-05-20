@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('phone_number');
             $table->string('insurance_provider')->nullable();
             $table->string('insurance_policy_number')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

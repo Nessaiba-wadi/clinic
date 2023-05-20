@@ -14,6 +14,7 @@
 
     <!-- CSS here -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/animate.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/nice-select.css') }}">
@@ -33,42 +34,74 @@
 <!-- header end -->
 
 <main>
-    <!-- login Area Strat-->
-    <section class="login-area pt-100 pb-100">
+    <!-- hero-area start -->
+    <!-- hero-area end -->
+    <!-- about-area start -->
+    <!-- about-area end -->
+    <!-- calculate-area start -->
+    <section class="appointment-area appointment-area-3 pos-rel pt-115 pb-120"
+             data-background="{{ asset('img/appoinment/appointment-bg.jpg') }}">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-8 offset-lg-2">
-                    <div class="basic-login">
-                        <h3 class="text-center mb-60">Login From Here</h3>
-                        <form  method="POST" action="{{ route('login') }}">
-                            @csrf
-                            <label for="email" :value="__('Email')">Email Address <span>*</span></label>
-                            <input id="email" type="email" name="email" :value="old('email')" required autofocus autocomplete="username"  placeholder="Enter Username or Email address..." />
-                            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-                            <label for="password" :value="__('Password')">Password <span>*</span></label>
-                            <input id="password" name="password" type="password" required autocomplete="current-password" placeholder="Enter password..." />
-                            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-                            <div class="login-action mb-20 fix">
-                                    <span class="log-rem f-left">
-                                        <input id="remember_me" name="remember" type="checkbox" />
-                                        {{ __('Remember me') }}
-                                    </span>
-                                <span class="forgot-login f-right">
-                                        <a href="#">{{ __('Lost your password??') }}</a>
-                                    </span>
+
+            <div class="row ">
+                <div class="col-lg-12 mx-auto">
+                    <div class="card mt-2 mx-auto p-4 bg-light">
+                        <div class="card-body bg-light">
+                            <div class="container">
+                                <h2>List Of Doctors</h2>
+
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>username</th>
+                                        <th>email</th>
+                                        <th>role</th>
+                                        <th>Status</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @forelse($users as $user)
+                                        <tr>
+                                            <td>{{ $user->username }}</td>
+                                            <td>{{ $user->email }}</td>
+                                            <td>{{ $user->role }}</td>
+                                            <td>@if(is_null($user->deleted_at))
+                                                    <span style="color: green">Active</span>
+                                                @else
+                                                    <span style="color: red">Non Active</span>
+                                            @endif</td>
+                                            <td>
+                                                <form method="POST" action="{{ route('user.destroy', $user) }}" onsubmit="return confirm('Are you sure you want to delete this User? This action cannot be undone.')">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn-danger btn-sm">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
+                                                            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
+                                                        </svg>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="5" class="text-center">No Doctors found</td>
+                                        </tr>
+                                    @endforelse
+
+                                    </tbody>
+                                </table>
                             </div>
-                            <button class="btn btn-icon-green w-100">Login Now</button>
-                            <div class="or-divide"><span>or</span></div>
-                            <button class="btn theme-btn w-100">Register Now</button>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- login Area End-->
+    <!-- calculate-area end -->
+    <!-- latest-news-area start -->
+    <!-- latest-news-area end -->
 </main>
-
 <!-- footer start -->
 <footer>
     <div class="footer-top primary-bg footer-map pos-rel pt-120 pb-80">
@@ -158,7 +191,6 @@
 <script src="{{ asset('js/waypoints.min.js') }}"></script>
 <script src="{{ asset('js/imagesloaded.pkgd.min.js') }}"></script>
 <script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvEEMx3XDpByNzYNn0n62Zsq_sVYPx1zY"></script>
 <script src="{{ asset('js/plugins.js') }}"></script>
 <script src="{{ asset('js/main.js') }}"></script>
 </body>

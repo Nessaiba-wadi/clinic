@@ -24,6 +24,7 @@ return new class extends Migration
             $table->integer('years_of_experience')->nullable();
             $table->string('bio')->nullable();
             $table->string('picture_profile')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
