@@ -14,18 +14,18 @@
     <!-- Place favicon.png in the root directory -->
 
     <!-- CSS here -->
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ secure_secure_asset('css/bootstrap.min.css') }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/animate.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/nice-select.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/all.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/meanmenu.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/slick.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/default.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
+    <link rel="stylesheet" href="{{ secure_secure_asset('css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ secure_secure_asset('css/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ secure_secure_asset('css/nice-select.css') }}">
+    <link rel="stylesheet" href="{{ secure_secure_asset('css/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ secure_secure_asset('css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ secure_secure_asset('css/meanmenu.css') }}">
+    <link rel="stylesheet" href="{{ secure_secure_asset('css/slick.css') }}">
+    <link rel="stylesheet" href="{{ secure_secure_asset('css/default.css') }}">
+    <link rel="stylesheet" href="{{ secure_secure_asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ secure_secure_asset('css/responsive.css') }}">
 </head>
 
 <body>
@@ -43,7 +43,7 @@
                     <article class="doctor-details-box">
                         <div class="section-title pos-rel mb-25">
                             <div class="section-icon">
-                                <img class="section-back-icon back-icon-left" src="{{ asset('img/section/section-back-icon-sky.png') }}"
+                                <img class="section-back-icon back-icon-left" src="{{ secure_asset('img/section/section-back-icon-sky.png') }}"
                                      alt="">
                             </div>
                             <div class="section-text pos-rel">
@@ -52,7 +52,7 @@
 
                             </div>
                             <div class="section-line pos-rel">
-                                <img src="{{ asset('img/doctor/section-title-line.png') }}" alt="">
+                                <img src="{{ secure_asset('img/doctor/section-title-line.png') }}" alt="">
                             </div>
                         </div>
                         <div class="service-details-text mb-40">
@@ -224,26 +224,26 @@
 <!-- footer end -->
 
 <!-- JS here -->
-<script src="{{ asset('js/vendor/modernizr-3.5.0.min.js') }}"></script>
-<script src="{{ asset('js/vendor/jquery-1.12.4.min.js') }}"></script>
-<script src="{{ asset('js/popper.min.js') }}"></script>
-<script src="{{ asset('js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('js/owl.carousel.min.js') }}"></script>
-<script src="{{ asset('js/isotope.pkgd.min.js') }}"></script>
-<script src="{{ asset('js/one-page-nav-min.js') }}"></script>
-<script src="{{ asset('js/slick.min.js') }}"></script>
-<script src="{{ asset('js/ajax-form.js') }}"></script>
-<script src="{{ asset('js/wow.min.js') }}"></script>
-<script src="{{ asset('js/jquery.nice-select.min.js') }}"></script>
-<script src="{{ asset('js/jquery.scrollUp.min.js') }}"></script>
-<script src="{{ asset('js/jquery.meanmenu.min.js') }}"></script>
-<script src="{{ asset('js/jquery.counterup.min.js') }}"></script>
-<script src="{{ asset('js/waypoints.min.js') }}"></script>
-<script src="{{ asset('js/imagesloaded.pkgd.min.js') }}"></script>
-<script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
+<script src="{{ secure_secure_asset('js/vendor/modernizr-3.5.0.min.js') }}"></script>
+<script src="{{ secure_secure_asset('js/vendor/jquery-1.12.4.min.js') }}"></script>
+<script src="{{ secure_secure_asset('js/popper.min.js') }}"></script>
+<script src="{{ secure_secure_asset('js/bootstrap.min.js') }}"></script>
+<script src="{{ secure_secure_asset('js/owl.carousel.min.js') }}"></script>
+<script src="{{ secure_secure_asset('js/isotope.pkgd.min.js') }}"></script>
+<script src="{{ secure_secure_asset('js/one-page-nav-min.js') }}"></script>
+<script src="{{ secure_secure_asset('js/slick.min.js') }}"></script>
+<script src="{{ secure_secure_asset('js/ajax-form.js') }}"></script>
+<script src="{{ secure_secure_asset('js/wow.min.js') }}"></script>
+<script src="{{ secure_secure_asset('js/jquery.nice-select.min.js') }}"></script>
+<script src="{{ secure_secure_asset('js/jquery.scrollUp.min.js') }}"></script>
+<script src="{{ secure_secure_asset('js/jquery.meanmenu.min.js') }}"></script>
+<script src="{{ secure_secure_asset('js/jquery.counterup.min.js') }}"></script>
+<script src="{{ secure_secure_asset('js/waypoints.min.js') }}"></script>
+<script src="{{ secure_secure_asset('js/imagesloaded.pkgd.min.js') }}"></script>
+<script src="{{ secure_secure_asset('js/jquery.magnific-popup.min.js') }}"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvEEMx3XDpByNzYNn0n62Zsq_sVYPx1zY"></script>
-<script src="{{ asset('js/plugins.js') }}"></script>
-<script src="{{ asset('js/main.js') }}"></script>
+<script src="{{ secure_secure_asset('js/plugins.js') }}"></script>
+<script src="{{ secure_secure_asset('js/main.js') }}"></script>
 </body>
 
 </html>
