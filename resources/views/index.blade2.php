@@ -13,7 +13,7 @@
     <!-- Place favicon.png in the root directory -->
 
     <!-- CSS here -->
-    <link rel="stylesheet" href="{{ secure_secure_asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ secure_asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ secure_asset('css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ secure_asset('css/animate.min.css') }}">
     <link rel="stylesheet" href="{{ secure_asset('css/nice-select.css') }}">
